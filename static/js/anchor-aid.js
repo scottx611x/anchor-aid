@@ -20,7 +20,7 @@ var loadURL = function (src) {
 
 var loadHTML = function (html) {
     var jQ = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>'
-    var highlight = '<script src="highlight.js"></script>'
+    var highlight = '<script src="/static/js/highlight.js"></script>'
 
     var iframe = document.getElementById('site');
     iframe.src = 'about:blank';
