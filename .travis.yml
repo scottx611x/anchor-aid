@@ -12,6 +12,13 @@ before_install:
   # https://github.com/travis-ci/travis-ci/issues/7940#issuecomment-311411559
   - export BOTO_CONFIG=/dev/null
 
+  # Install terraform
+  - curl -sLo /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
+  - unzip /tmp/terraform.zip -d /tmp
+  - mkdir ~/bin
+  - mv /tmp/terraform ~/bin
+  - export PATH="~/bin:$PATH"
+
 install:
   - pip install -r flask_app/requirements.txt
   - pip install codecov
@@ -28,6 +35,7 @@ deploy:
 
 env:
   global:
+    - TF_INPUT=false
     - AWS_DEFAULT_REGION=us-east-1
     - secure: "JAvxZnyrD1k7MPn18dcAasXv69TvUMHNLPqlGpCu177G+gbSi1EPbxJqiY8ZjR/fe6sqPyyH9CFvx6Cb+Fe80y8LE5frteZqDcnAWWNEJAXfyH67nD5RbsxGaG3RnB3IRRqbt8bSHrC5wWaDuePjqpZqWLdNZ9J1a5RGNpod866ospxyWoBX9B5Inr9X9lY0c9pcoVvAK0CYTloNkwxF19TM2LXoxROXktUruyaJbUVJJeU5c64EbgRNDI/KHgp4eAgTK9SWHCu39hdxZPacG7Ge3zRFhnYnN+UcP/D/K659vCcPBmsxtSHvwDxL1mU8dz/zzjoT0whptI/3BFY7TJgj9uT/F0kwzUUV2LN8ETYXezbXA9qvAd6cfwdgxYO6nOQgXOF1E8Ev4yNJJ8RSoge32uF8kL73ONDb1B+IKqnKK2KqrPJB45xDR96NHH329fpl+GNTSqWex3cNSIMCxgpc/JEWlcwLSW+0v9YVTn/6x5Dv+ma6TeQWl6fNtMz6foB68A9eBbpBIeoJitKI5/J87k2cwVi1MH665bE9j6VHs5VE/uLybAn72Rrv9gStyTS3kh6V0EyKkF08gNByNxZG0suo8h3m6B6bTj72/wX59L8qcufTB85dxyZS2pqssHtVOQQOjXV+1RFFACDi24PfK/e4j2umq6p+CiMjV5k="
     - secure: "CFtOpyxvlgemVEcm42uO0y36yGQtjVSRnnHgItqQXnGKieZVeI1i6itN6InZHwcg1jO+nO+0VyBvxM/dTdk7EAmMWtastGV0BwSkYSNluVxf5KEdfmwwDNUg1HjAvI3kcr6bWKTkCRQm9TBu6N/AnvuAG2+aJ5C6Xi7fMlcC0KeEDlq67uNzpoD+IkR7TlDhbA6rsVbCSIPgNgr2R4s82S2ste8JjJdGIThRFJnaF//EwQ1kpXCWZjvX6NVycZMWv8+YY8is8jls1aH3EFcRZv2ntcytEO3K+O2f4wU9PRN9QtPjoXHYcaQXKCrbXHmAWWXbt37aSNlyhK+7N90Nk8WmgUXgfOgazUWGc73Z94XkGilgDPvAsUsCGJ9o2aObKu5xq+i7waMhTEUPmTUbqxm/YlBcbXS5SxWSKG2RUpL9oAUzzNoY1qgNRcyfvdWp+Ekd45MsEzkcFkmZy62rQ10f6r5ibJntfvGmrc0F+SEupmHfdDq5E66V7/ndYHJp2hzqlXQ+jHij+4U+sjGMhKZnpyWR7c8xoQkqdBhjnt+HjqNo63jMxp50DJXwBqKG92r9D3xKbtWOHLn8gddK2ccixb4FvA3aD3A5Yod9IoovWZQetUpNHeSvWTpRuauWQRmjbreJ/Bcp2iKP1P7/i3nqG59xZxdnUFHBOgwJYjo="
