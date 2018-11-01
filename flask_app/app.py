@@ -1,31 +1,40 @@
-import json
+import uuid
 
-import boto3
-from flask import Flask
-from flask import render_template
+from flask import Flask, Response, jsonify, redirect, render_template, request
 
-from s3_bucket_config import S3_BUCKET
-
-
-SITE = "http://github.com/refinery-platform/refinery-platform/wiki/setting-up-newer-galaxy"
-SEARCH = "You have to add a Galaxy Instance for the Galaxy installation in question to Refinery through the admin UI."
+from flask_app.utils import dump_s3, load_s3, validate_form_data
 
 app = Flask(__name__)
-app.debug = True
-
-s3 = boto3.client("s3")
 
 
-@app.route('/', methods=['GET'])
-def index():
-    return render_template("home.html", **{"site": SITE, "search": SEARCH})
+@app.route('/', defaults={'uuid': None}, methods=['GET'])
+@app.route('/<string:uuid>', methods=['GET'])
+def index(uuid):
+    if uuid is None:
+        return render_template("base.html")
+    else:
+        try:
+            data = load_s3(uuid)
+        except Exception as e:
+            return Response(f"Bad Request: {e}", status=400)
+        else:
+            return render_template(
+                "anchor-aid.html",
+                **{"site": data["site"], "search": data["search"]}
+            )
 
 
-@app.route('/list', methods=['GET'])
-def list():
-    return json.dumps(s3.list_objects(Bucket=S3_BUCKET))
+@app.route('/list/<string:uuid>', methods=['GET'])
+def list(uuid):
+    return jsonify(load_s3(uuid))
 
 
-@app.route('/create', methods=['GET'])
+@app.route('/create', methods=['POST'])
 def create():
-    return json.dumps(s3.list_objects(Bucket=S3_BUCKET))
+    form_data = request.form
+    if not validate_form_data(form_data):
+        return Response("Bad Request", status=400)
+
+    key = str(uuid.uuid4())
+    dump_s3(key, form_data)
+    return redirect(f"/{key}")
