@@ -3,7 +3,7 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "aws_credentials_profile" {
-  description = "Entry within ~/.aws/credentials to fetch creds from"
-  default = "scottx611x@gmail.com"
-}
+//variable "aws_credentials_profile" {
+//  description = "Entry within ~/.aws/credentials to fetch creds from"
+//  default = "scottx611x@gmail.com"
+//}
