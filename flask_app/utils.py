@@ -5,8 +5,7 @@ from flask_app.s3_bucket_config import S3_BUCKET
 
 import boto3
 
-session = boto3.Session(profile_name='scottx611x@gmail.com')
-s3 = session.resource("s3").Bucket(S3_BUCKET)
+s3 = boto3.resource("s3").Bucket(S3_BUCKET)
 
 
 def is_valid_url(url):
