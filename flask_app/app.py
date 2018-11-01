@@ -2,7 +2,7 @@ import uuid
 
 from flask import Flask, Response, jsonify, redirect, render_template, request
 
-from flask_app.utils import dump_s3, load_s3, validate_form_data
+from .utils import dump_s3, load_s3, validate_form_data
 
 app = Flask(__name__)
 
