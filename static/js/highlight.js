@@ -6,7 +6,7 @@ $( document ).ready(
         let $text = $('*:contains("' + parent.search + '"):last');
         $text.css('background-color', 'yellow');
         $('html, body').animate({
-            scrollTop: $text.offset().top,
+            scrollTop: $text.offset().top * .9,
             scrollLeft: $text.offset().left
         });
     }

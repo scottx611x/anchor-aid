@@ -14,24 +14,29 @@
           <div class="container-fluid">
             <div class="navbar-header">
               <a class="navbar-brand" href="#">Anchor Aid</a>
+                 <h5><a href="{{ site }}">{{ site }}</a> {{ search|truncate(50) }}</h5>
             </div>
+
             <ul class="nav navbar-nav">
               <li class="active"><a href="/">Home</a></li>
+              <li><a href="./b88ce0ce-f2d0-48be-8b29-9fc1a4360faa">Example</a></li>
             </ul>
           </div>
         </nav>
     {% endblock %}
     <body>
        {% block content %}
-           <form method="post" action="./create">
-              Site:<br>
-              <input type="text" name="site">
-              <br>
-              Search:<br>
-              <input type="text" name="search">
-              <br><br>
-              <input type="submit" value="Submit">
-           </form>
+           <div align="center">
+               <form method="post" action="./create">
+                  Site:<br>
+                  <input type="text" name="site">
+                  <br>
+                  Search:<br>
+                  <textarea name="search" cols="40" rows="5"></textarea>
+                  <br><br>
+                  <input type="submit" value="Submit">
+               </form>
+           </div>
        {% endblock %}
     </body>
 </html>
