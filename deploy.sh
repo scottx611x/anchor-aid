@@ -1,6 +1,6 @@
 #!/usr/local/bin/bash
 
-cd terraform
+cd deployment
 terraform init
 terraform apply -auto-approve
 cd ..

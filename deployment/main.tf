@@ -1,6 +1,5 @@
 provider "aws" {
   region  = "${var.region}"
-  profile = "${var.aws_credentials_profile}"
 }
 
 resource "aws_s3_bucket" "anchor-aid" {
