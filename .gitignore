@@ -2,3 +2,4 @@ __pycache__
 .idea
 deployment/.terraform
 deployment/terraform.tfstate*
+.coverage
