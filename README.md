@@ -2,6 +2,9 @@
 
 [Current dev site](https://lc00m8pxxf.execute-api.us-east-1.amazonaws.com/dev/3898bdab-407d-468e-8f71-2510e41691e3)
 
+![nov-03-2018 21-52-59](https://user-images.githubusercontent.com/5629547/47959126-dd040100-dfb2-11e8-9c4c-e2cc6da8b8dd.gif)
+
+
 # TODOS:
 - [x] terraform code to create s3 bucket~~~, and [custom IAM Roles for the lambda to be used by Zappa](https://github.com/Miserlou/Zappa#using-custom-aws-iam-roles-and-policies)~~~
 - [x] Implement Zappa portion of code and utilize the role from previous step
