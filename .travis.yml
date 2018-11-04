@@ -19,11 +19,11 @@ before_install:
   - export PATH="~/bin:$PATH"
 
 install:
-  - pip install -r flask_app/requirements.txt
+  - pip install -r requirements.txt
   - pip install codecov
 
 script:
-  - nosetests --with-coverage --cover-package=flask_app
+  - nosetests --with-coverage --cover-tests --cover-package=index,utils,s3_bucket_config,tests
 
 after_success:
   - codecov --token=$CODECOV_TOKEN
