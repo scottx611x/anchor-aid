@@ -1,0 +1,9 @@
+{
+    "dev": {
+        "aws_region": "us-east-1",
+        "app_function": "index.app",
+        "profile_name": "scottx611x@gmail.com",
+        "s3_bucket": "zappa-g43w2e80e",
+        "runtime": "python3.6"
+    }
+}

@@ -1,7 +1,0 @@
-{
-    "dev": {
-        "aws_region": "us-east-1",
-        "app_function": "app.app",
-        "s3_bucket": "zappa-g43w2e80e"
-    }
-}

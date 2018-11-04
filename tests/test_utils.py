@@ -3,8 +3,8 @@ from unittest import TestCase
 import boto3
 from moto import mock_s3
 
-from flask_app.s3_bucket_config import S3_BUCKET
-from flask_app.utils import is_valid_url, validate_form_data, dump_s3, load_s3
+from s3_bucket_config import S3_BUCKET
+from utils import is_valid_url, validate_form_data, dump_s3, load_s3
 
 
 class UtilitiesTestCase(TestCase):

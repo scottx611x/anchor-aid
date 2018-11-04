@@ -1,7 +1,7 @@
 import json
 from urllib.parse import urlparse
 
-from .s3_bucket_config import S3_BUCKET
+from s3_bucket_config import S3_BUCKET
 
 import boto3
 

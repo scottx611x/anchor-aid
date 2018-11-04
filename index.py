@@ -2,7 +2,7 @@ import uuid
 
 from flask import Flask, Response, jsonify, redirect, render_template, request
 
-from .utils import dump_s3, load_s3, validate_form_data
+from utils import dump_s3, load_s3, validate_form_data
 
 app = Flask(__name__)
 
@@ -32,9 +32,12 @@ def list(uuid):
 @app.route('/create', methods=['POST'])
 def create():
     form_data = request.form
+
+    # Add <scheme>:// if not there already
+
     if not validate_form_data(form_data):
         return Response("Bad Request", status=400)
 
     key = str(uuid.uuid4())
     dump_s3(key, form_data)
-    return redirect(f"/{key}")
+    return redirect(f"./{key}")

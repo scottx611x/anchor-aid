@@ -5,13 +5,13 @@ from unittest import TestCase
 
 from flask import template_rendered
 
-from flask_app.app import app
-from flask_app.s3_bucket_config import S3_BUCKET
+from index import app
+from s3_bucket_config import S3_BUCKET
 
 import boto3
 from moto import mock_s3
 
-from flask_app.utils import dump_s3
+from utils import dump_s3
 
 
 @contextmanager
