@@ -10,6 +10,7 @@ I thought it would be cool..., but mainly to be able to point to specific text i
 The anchor aid interface is a serverless Flask app deployed with the aid of [Zappa](https://github.com/Miserlou/Zappa) having the ability to support many concurrent users. Incoming requests (url and text to search for) are POSTed and stored as JSON in an S3 bucket under a unique key. This key can then be used to construct a url like so: `https://www.anchor-aid.com/<key>` which will re-render the url/search term as it was done prior. 
 
 [🐶 example on current dev site](https://lc00m8pxxf.execute-api.us-east-1.amazonaws.com/dev/b88ce0ce-f2d0-48be-8b29-9fc1a4360faa)
+
 ![nov-03-2018 21-52-59](https://user-images.githubusercontent.com/5629547/47959126-dd040100-dfb2-11e8-9c4c-e2cc6da8b8dd.gif)
 
 ### Why can't I just send someone a link and tell them to ctrl+f?
