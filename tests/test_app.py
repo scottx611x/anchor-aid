@@ -73,8 +73,14 @@ class RoutesTestCase(GenericTestBase):
         response = self.test_client.post('/create', data=data)
         self.assertEquals(response.status_code, 302)
 
-    def test_create_route_bad_data(self):
-        data = {"search": "test", "site": ".com"}
+    def test_create_route_bad_url(self):
+        data = {"search": "test", "site": ""}
         response = self.test_client.post('/create', data=data)
         self.assertEquals(response.status_code, 400)
         self.assertEqual(response.data, b"Bad Request")
+
+    def test_create_route_without_url_scheme_still_works(self):
+        data = {"search": "test", "site": "www.example.com"}
+        response = self.test_client.post('/create', data=data)
+        self.assertEquals(response.status_code, 302)
+

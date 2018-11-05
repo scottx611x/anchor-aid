@@ -15,7 +15,7 @@ class UtilitiesTestCase(TestCase):
         self.assertFalse(is_valid_url("http:/www.example.com"))
 
     def test_validate_form_data_good_data(self):
-        self.assertTrue(
+        self.assertIsNotNone(
             validate_form_data(
                 {
                     "site": "http://www.example.com",
