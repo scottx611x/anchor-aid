@@ -26,11 +26,11 @@ def index(uuid):
 
 @app.route('/create', methods=['POST'])
 def create():
-    form_data = request.form
+    form_data = request.form.to_dict()
 
     # Add <scheme>:// if not there already
-
-    if not validate_form_data(form_data):
+    validated_form_data = validate_form_data(form_data)
+    if not validated_form_data:
         return Response("Bad Request", status=400)
 
     key = str(uuid.uuid4())
