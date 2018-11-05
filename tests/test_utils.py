@@ -25,7 +25,7 @@ class UtilitiesTestCase(TestCase):
         )
 
     def test_validate_form_data_bad_site(self):
-        self.assertFalse(
+        self.assertIsNotNone(
             validate_form_data(
                 {
                     "site": "example.com",
