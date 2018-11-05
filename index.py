@@ -1,6 +1,6 @@
 import uuid
 
-from flask import Flask, Response, jsonify, redirect, render_template, request
+from flask import Flask, Response, redirect, render_template, request
 
 from utils import dump_s3, load_s3, validate_form_data
 
@@ -22,11 +22,6 @@ def index(uuid):
                 "anchor-aid.html",
                 **{"site": data["site"], "search": data["search"]}
             )
-
-
-@app.route('/list/<string:uuid>', methods=['GET'])
-def list(uuid):
-    return jsonify(load_s3(uuid))
 
 
 @app.route('/create', methods=['POST'])

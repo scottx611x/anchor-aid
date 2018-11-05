@@ -68,14 +68,6 @@ class RoutesTestCase(GenericTestBase):
         response = self.test_client.get('/' + key)
         self.assertEquals(response.status_code, 400)
 
-    def test_list_route(self):
-        key = str(uuid.uuid4())
-        data = {"search": "test", "site": "http://www.example.com"}
-        dump_s3(key, data)
-        response = self.test_client.get('/list/' + key)
-        self.assertEquals(response.status_code, 200)
-        self.assertEqual(response.json, data)
-
     def test_create_redirects_to_new_page(self):
         data = {"search": "test", "site": "http://www.example.com"}
         response = self.test_client.post('/create', data=data)
