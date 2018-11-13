@@ -27,8 +27,43 @@ let loadHTML = function (html) {
     iframe.contentWindow.document.close();
 };
 
+let initializeCopyTooltip = function () {
+    $("#current-link").text(window.location.href);
+    $("#copy-link-button").tooltip({
+      trigger: 'click',
+      placement: 'bottom'
+    });
+
+    function setTooltip(message) {
+      $("#copy-link-button").tooltip('hide')
+        .attr('data-original-title', message)
+        .tooltip('show');
+    }
+
+    function hideTooltip() {
+      setTimeout(function() {
+        $("#copy-link-button").tooltip('hide');
+      }, 1000);
+    }
+
+    // Clipboard
+
+    var clipboard = new ClipboardJS("#copy-link-button");
+
+    clipboard.on('success', function(e) {
+      setTooltip('Copied!');
+      hideTooltip();
+    });
+
+    clipboard.on('error', function(e) {
+      setTooltip('Failed!');
+      hideTooltip();
+    });
+};
+
 window.onload = function() {
     let iframe = document.getElementById('site');
     loadURL(site);
+    initializeCopyTooltip();
 };
 

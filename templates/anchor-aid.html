@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
 
 {% block css %}
-    <style type="text/css">
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-        #content { position:absolute; left: 0; right: 0; bottom: 0; top: 75px; }
-    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 {% endblock %}
 {% block js %}
     <script>
@@ -12,6 +9,14 @@
         var search = '{{ search }}';
     </script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/anchor-aid.js') }}"></script>
+{% endblock %}
+
+{% block clippable_url %}
+<div>
+<button id="copy-link-button" class="btn btn-primary" data-clipboard-target="#current-link">
+    <h5 id="current-link"></h5><i class="far fa-copy"></i>
+</button>
+</div>
 {% endblock %}
 
 {%  block content %}
