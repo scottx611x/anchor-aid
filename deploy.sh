@@ -5,5 +5,5 @@ terraform init
 terraform apply -auto-approve
 cd ..
 
-zappa deploy prod
-zappa update prod
+zappa deploy production
+zappa update production
