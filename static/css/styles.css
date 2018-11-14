@@ -10,5 +10,14 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    top: 100px;
+    top: 125px;
+}
+
+h5, #current-link {
+    color: white !important;
+}
+
+.vl {
+    border-left: 1px solid black;
+    height: 100%;
 }

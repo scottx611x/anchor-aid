@@ -1,6 +1,7 @@
 import uuid
 
-from flask import Flask, Response, redirect, render_template, request
+from flask import Flask, Markup, Response, redirect, render_template, request
+import markdown
 
 from utils import dump_s3, load_s3, validate_form_data
 
@@ -11,7 +12,9 @@ app = Flask(__name__)
 @app.route('/<string:uuid>', methods=['GET'])
 def index(uuid):
     if uuid is None:
-        return render_template("base.html")
+        with open("README.md") as md:
+            readme = Markup(markdown.markdown(md.read()))
+        return render_template("base.html", **locals())
     else:
         try:
             data = load_s3(uuid)

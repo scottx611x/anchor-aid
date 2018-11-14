@@ -2,6 +2,8 @@
     <head>
         <title>Anchor Aid</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
         {% block css %}
         {% endblock %}
 
@@ -13,41 +15,60 @@
         {% endblock %}
     </head>
     {% block nav %}
-        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-dark" style="background-color: #00237e;">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#">Anchor Aid</a>
+              <a class="navbar-brand" href="#">Anchor Aid <i class="fas fa-anchor"></i> / <i class="fas fa-band-aid"></i></a>
             </div>
 
             <div align="center">
-              <h5><a href="{{ site }}">{{ site|truncate(75) }}</a> {{ search|truncate(50) }}</h5>
+              {% if search %}
+                  <h5><a href="{{ site }}">{{ site|truncate(75) }}</a> - '{{ search|truncate(50) }}'</h5>
+              {%  endif %}
               <br>
               {% block clippable_url %}
               {% endblock %}
             </div>
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Home</a></li>
-              <li><a href="./b88ce0ce-f2d0-48be-8b29-9fc1a4360faa">Example</a></li>
+              <li class="nav-item"><a href="/">Home</a></li>
+              <li class="nav-item"><a href="./b88ce0ce-f2d0-48be-8b29-9fc1a4360faa">Example</a></li>
+              <li class="nav-item"><a href="https://github.com/scottx611x/anchor-aid">Github <i class="fab fa-github"></i></a></li>
             </ul>
           </div>
         </nav>
     {% endblock %}
     <body>
        {% block content %}
-           <div align="center">
-               <h1>⚓</h1>
-               <br><br>
-               <form method="post" action="./create">
-                  URL:<br>
-                  <input type="text" size="75" name="site">
-                  <br><br>
-                  Text to search for within above URL's webpage:<br>
-                  <textarea name="search" cols="40" rows="5"></textarea>
-                  <br><br>
-                  <input type="submit" value="Submit">
-               </form>
-           </div>
+           <div class="container">
+                <div class="row">
+                    <div class="scrollable col-md-6">
+                        {{ readme }}
+                    </div>
+                    <div class="col-md-2">
+                        <div class="vl"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <br><br><br><br><br>
+                        <h3>Try It Out...</h3>
+                        <form method="post" action="./create">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" name="site" class="form-control" placeholder="URL pointing to page to be rendered" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="search" class="form-control" placeholder="Text to search for and select when above URL is rendered" style="width: 100%; height: 150px;"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Submit" style="width: 100px;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
        {% endblock %}
     </body>
 </html>

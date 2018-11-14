@@ -29,6 +29,7 @@ let loadHTML = function (html) {
 
 let initializeCopyTooltip = function () {
     $("#current-link").text(window.location.href);
+    $("#current-link").href = window.location.href;
     $("#copy-link-button").tooltip({
       trigger: 'click',
       placement: 'bottom'
