@@ -7,3 +7,4 @@ cd ..
 
 zappa deploy production
 zappa update production
+zappa certify --yes
