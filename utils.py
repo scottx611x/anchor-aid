@@ -10,6 +10,7 @@ s3 = boto3.resource("s3").Bucket(S3_BUCKET)
 
 logger = logging.getLogger(__name__)
 
+
 def is_valid_url(url):
     try:
         result = urlparse(url)
