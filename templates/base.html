@@ -15,7 +15,7 @@
         {% endblock %}
     </head>
     {% block nav %}
-        <nav class="navbar navbar-dark" style="background-color: #00237e;">
+        <nav class="navbar fixed-top navbar-dark" style="background-color: #00237e;">
           <div class="container-fluid">
             <div class="navbar-header">
               <a class="navbar-brand" href="#">Anchor Aid <i class="fas fa-anchor"></i> / <i class="fas fa-band-aid"></i></a>
@@ -32,7 +32,6 @@
 
             <ul class="nav navbar-nav">
               <li class="nav-item"><a href="/">Home</a></li>
-              <li class="nav-item"><a href="./b88ce0ce-f2d0-48be-8b29-9fc1a4360faa">Example</a></li>
               <li class="nav-item"><a href="https://github.com/scottx611x/anchor-aid">Github <i class="fab fa-github"></i></a></li>
             </ul>
           </div>
@@ -41,27 +40,28 @@
     <body>
        {% block content %}
            <div class="container">
+                <br><br><br><br>
                 <div class="row">
-                    <div class="scrollable col-md-6">
+                    <div class="scrollable col-md-8">
                         {{ readme }}
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <div class="vl"></div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <br><br><br><br><br>
                         <h3>Try It Out...</h3>
                         <form method="post" action="./create">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text" name="site" class="form-control" placeholder="URL pointing to page to be rendered" value="" />
+                                    <input type="text" name="site" class="form-control" placeholder="URL to valid web page" value="" />
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="search" class="form-control" placeholder="Text to search for and select when above URL is rendered" style="width: 100%; height: 150px;"></textarea>
+                                    <textarea name="search" class="form-control" placeholder="Text to search for and select when above URL is rendered" style="width: 100%; height: 300px;"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" name="submit" class="btn btn-primary" value="Submit" style="width: 100px;"/>
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Submit" style="width: 150px;"/>
                                 </div>
                             </div>
                         </div>
