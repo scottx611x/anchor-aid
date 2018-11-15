@@ -16,8 +16,11 @@ let loadHTML = function (html) {
 
     let iframe = document.getElementById('site');
     iframe.src = 'about:blank';
+    var urlObj =  new URL(site);
+    html.replace(/<head>/i, '<head>' + jQ + highlight + '<base target="_blank" href="' + url + '"><scr' + 'ipt>document.addEventListener("click", function(e) { if(e.target && e.target.nodeName == "A") { e.preventDefault(); parent.loadURL(e.target.href); } });</scr' + 'ipt>');
+    var newHTML = replace_all_rel_by_abs(urlObj, html);
     iframe.contentWindow.document.open();
-    iframe.contentWindow.document.write(html.replace(/<head>/i, '<head>' + jQ + highlight + '<base target="_blank" href="' + url + '"><scr' + 'ipt>document.addEventListener("click", function(e) { if(e.target && e.target.nodeName == "A") { e.preventDefault(); parent.loadURL(e.target.href); } });</scr' + 'ipt>'));
+    iframe.contentWindow.document.write(newHTML);
     iframe.contentWindow.document.close();
 };
 
