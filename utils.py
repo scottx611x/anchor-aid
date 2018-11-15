@@ -12,12 +12,8 @@ logger = logging.getLogger(__name__)
 
 
 def is_valid_url(url):
-    try:
-        result = urlparse(url)
-        return all([result.scheme, result.netloc])
-    except Exception as e:
-        logger.error(f"An error occurred when validating: {url} {e}")
-        return False
+    result = urlparse(url)
+    return all([result.scheme, result.netloc])
 
 
 def validate_form_data(post_data):
