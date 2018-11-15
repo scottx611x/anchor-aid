@@ -25,7 +25,8 @@ You still can, but this might be easier.
 - The text to search for must be within the content of a Text Node in the DOM
 - The web page to be rendered can't rely on any session/login information. Sites will behave the same within this applications as they do in a Private Browsing/Incognito window.
 - Resources requested within the iframe context requiring `Access-Control-Allow-Origin` headers can't currently be fetched.
-- The more specific the text to search for is, the better. searching for "the" probably will not get you too far.
+- The more specific the text to search for is, the better. Searching for "the" probably will not get you too far.
+- Any links within the iframe context won't behave properly
 
 ---
 
