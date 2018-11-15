@@ -1,5 +1,4 @@
 # [anchor-aid](https://anchor-aid.scott-ouellette.com/) [![Build Status](https://travis-ci.com/scottx611x/anchor-aid.svg?token=EkzyvwdZ2jcY78ErmS88&branch=master)](https://travis-ci.com/scottx611x/anchor-aid) [![codecov](https://codecov.io/gh/scottx611x/anchor-aid/branch/master/graph/badge.svg?token=yMq2cuLWGH)](https://codecov.io/gh/scottx611x/anchor-aid)
----
 
 ## What?
 Anchor-aid renders any "iframe-able" webpage and proceeds to scroll into view and highlight some specific text that you want to share with someone. You are then provided with a persisting url that you can share with others, who can then be easily led to your text of interest.
@@ -23,8 +22,9 @@ You still can, but this might be easier.
 - The web page to be rendered must be "iframe-able". Sites like [stackoverflow](https://stackoverflow.com) block this functionality.
 - The text to search for must be within the content of a Text Node in the DOM
 - The web page to be rendered can't rely on any session/login information. Sites will behave the same within this applications as they do in a Private Browsing/Incognito window.
-- The more specific the text to search for is, the better. searching for "the" probably will not get you too far.
 - Resources requested within the iframe context requiring `Access-Control-Allow-Origin` headers can't currently be fetched.
+- The more specific the text to search for is, the better. searching for "the" probably will not get you too far.
+
 ---
 
 <div align="center">
