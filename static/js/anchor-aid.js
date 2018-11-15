@@ -4,15 +4,14 @@ See https://stackoverflow.com/a/25587469
 */
 
 let getData = function (data) {
-    if (data && data.query && data.query.results && data.query.results.resources && data.query.results.resources.content && data.query.results.resources.status == 200) loadHTML(data.query.results.resources.content);
-    else if (data && data.error && data.error.description) loadHTML(data.error.description);
+    if (data && data.contents && data.status.http_code === 200) loadHTML(data.contents);
     else loadHTML('Error: Cannot load ' + url);
 };
 
 let loadURL = function (src) {
     url = src;
     let script = document.createElement('script');
-    script.src = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20data.headers%20where%20url%3D%22' + encodeURIComponent(url) + '%22&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=getData';
+    script.src = 'http://allorigins.me/get?url=' + encodeURIComponent(url) +'&callback=getData';
     document.body.appendChild(script);
 };
 
