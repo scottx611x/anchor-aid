@@ -12,11 +12,13 @@ The anchor aid interface is a serverless Flask app deployed with the aid of [Zap
 ## Why can't I just send someone a link and tell them to ctrl+f?
 You still can, but this might be easier.
 
+[🐶 example](https://anchor-aid.scott-ouellette.com/b88ce0ce-f2d0-48be-8b29-9fc1a4360faa)
+
 ---
 
 ## Sites that play nicely (...so far):
 - [Github](https://anchor-aid.scott-ouellette.com/908ceb2f-c7f2-4147-b17a-cc09c9703310)
-- [Wikipedia](https://anchor-aid.scott-ouellette.com/d8115acc-9928-46f5-8dbd-2f48333f3919)
+- [Wikipedia](https://anchor-aid.scott-ouellette.com/47a1d6e2-5416-4473-9f77-89858bfc76e6)
 
 ## Known Limitations:
 - The web page to be rendered must be "iframe-able". Sites like [stackoverflow](https://stackoverflow.com) block this functionality.
