@@ -6,7 +6,7 @@ let getData = function (data) {
 let loadURL = function (src) {
     url = src;
     let script = document.createElement('script');
-    script.src = 'http://allorigins.me/get?url=' + encodeURIComponent(url) +'&callback=getData';
+    script.src = 'https://allorigins.me/get?url=' + encodeURIComponent(url) +'&callback=getData';
     document.body.appendChild(script);
 };
 
