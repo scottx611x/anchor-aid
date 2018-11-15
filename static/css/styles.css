@@ -17,6 +17,13 @@ h5, #current-link {
     color: white !important;
 }
 
+footer {
+    color: white !important;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
 .vl {
     border-left: 1px solid #00237e;
     height: 175%;
