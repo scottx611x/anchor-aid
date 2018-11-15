@@ -1,3 +1,11 @@
+terraform {
+  backend "s3" {
+    bucket = "anchor-aid-terraform"
+    key = "terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
 provider "aws" {
   region  = "${var.region}"
   version = "1.41.0"
