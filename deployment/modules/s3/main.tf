@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "anchor-aid" {
-  bucket = "anchor-aid"
+  bucket = "${var.s3_bucket_name}"
 }
 
 resource "local_file" "s3-bucket-config" {

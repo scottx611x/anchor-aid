@@ -1,10 +1,10 @@
 provider "aws" {
   region  = "${var.region}"
-  profile = "scottx611x@gmail.com"
 }
 
 module "s3" {
   source  = "./modules/s3"
+  s3_bucket_name = "${var.s3_bucket_name}"
 }
 
 module "iam" {
