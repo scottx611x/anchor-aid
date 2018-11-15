@@ -14,7 +14,7 @@ def index(uuid):
     if uuid is None:
         with open("README.md") as md:
             readme = Markup(markdown.markdown(md.read()))
-        return render_template("base.html", **locals())
+        return render_template("base.html", **{"readme": readme})
     else:
         try:
             data = load_s3(uuid)
