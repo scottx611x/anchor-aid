@@ -1,12 +1,13 @@
 let getData = function (data) {
-    if (data && data.contents && data.status.http_code === 200) loadHTML(data.contents);
+    if (data && data.query && data.query.results && data.query.results.resources && data.query.results.resources.content && data.query.results.resources.status == 200) loadHTML(data.query.results.resources.content);
+    else if (data && data.error && data.error.description) loadHTML(data.error.description);
     else loadHTML('Error: Cannot load ' + url);
 };
 
 let loadURL = function (src) {
     url = src;
     let script = document.createElement('script');
-    script.src = 'https://allorigins.me/get?url=' + encodeURIComponent(url) +'&callback=getData';
+    script.src = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20data.headers%20where%20url%3D%22' + encodeURIComponent(url) + '%22&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=getData';
     document.body.appendChild(script);
 };
 
@@ -16,11 +17,8 @@ let loadHTML = function (html) {
 
     let iframe = document.getElementById('site');
     iframe.src = 'about:blank';
-    var urlObj =  new URL(site);
-    html.replace(/<head>/i, '<head>' + jQ + highlight + '<base target="_blank" href="' + url + '"><scr' + 'ipt>document.addEventListener("click", function(e) { if(e.target && e.target.nodeName == "A") { e.preventDefault(); parent.loadURL(e.target.href); } });</scr' + 'ipt>');
-    var newHTML = replace_all_rel_by_abs(urlObj, html);
     iframe.contentWindow.document.open();
-    iframe.contentWindow.document.write(newHTML);
+    iframe.contentWindow.document.write(html.replace(/<head>/i, '<head>' + jQ + highlight + '<base target="_blank" href="' + url + '"><scr' + 'ipt>document.addEventListener("click", function(e) { if(e.target && e.target.nodeName == "A") { e.preventDefault(); parent.loadURL(e.target.href); } });</scr' + 'ipt>'));
     iframe.contentWindow.document.close();
 };
 
