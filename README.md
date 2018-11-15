@@ -8,7 +8,7 @@ Anchor-aid renders any "iframe-able" webpage and proceeds to scroll into view an
 I thought it would be cool..., but mainly to be able to point to specific text in a webpage that doesn't have good/useful [bookmark links](https://www.w3schools.com/tags/att_a_name.asp). Sometimes its nice to be able to direct someone to a portion of some installation instructions or a point in the middle of an article .etc.
 
 ## How?
-The anchor aid interface is a serverless Flask app deployed with the aid of [Zappa](https://github.com/Miserlou/Zappa) having the ability to support many concurrent users. Incoming requests (url and text to search for) are POSTed and stored as JSON in an S3 bucket under a unique key. This key can then be used to construct a url like so: `https://www.anchor-aid.com/<key>` which will re-render the url/search term as it was done prior.
+The anchor aid interface is a serverless Flask app deployed with the aid of [Zappa](https://github.com/Miserlou/Zappa) having the ability to support many concurrent users. Incoming requests (url and text to search for) are POSTed and stored as JSON in an S3 bucket under a unique key. This key can then be used to construct a url like so: `https://anchor-aid.scott-ouellette.com/<key>` which will re-render the url/search term as it was done prior.
 
 ## Why can't I just send someone a link and tell them to ctrl+f?
 You still can, but this might be easier.
