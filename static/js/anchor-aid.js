@@ -1,8 +1,3 @@
-/*
-Based off of: "Bypassing X-Frame-Options in <iframe> using YQL"
-See https://stackoverflow.com/a/25587469
-*/
-
 let getData = function (data) {
     if (data && data.contents && data.status.http_code === 200) loadHTML(data.contents);
     else loadHTML('Error: Cannot load ' + url);
