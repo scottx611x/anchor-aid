@@ -1,5 +1,18 @@
 $( document ).ready(
     function() {
+        jQuery.fn.highlight = function (str, className) {
+            let regex = new RegExp(str, "gi");
+            return this.each(function () {
+                $(this).contents().filter(function() {
+                    return (this.nodeType === 3 || this.nodeType === 9) && regex.test(this.nodeValue);
+                }).replaceWith(function() {
+                    return (this.nodeValue || "").replace(regex, function(match) {
+                        return "<span class=\"" + className + "\">" + match + "</span>";
+                    });
+                });
+            });
+        };
+
         let highlightClassName = "anchor-aid-highlight";
         let anchors = document.getElementsByTagName('a');
         for (let i = 0; i < anchors.length; i++)
@@ -14,16 +27,3 @@ $( document ).ready(
 
     }
 );
-
-jQuery.fn.highlight = function (str, className) {
-    let regex = new RegExp(str, "gi");
-    return this.each(function () {
-        $(this).contents().filter(function() {
-            return this.nodeType === 3 && regex.test(this.nodeValue);
-        }).replaceWith(function() {
-            return (this.nodeValue || "").replace(regex, function(match) {
-                return "<span class=\"" + className + "\">" + match + "</span>";
-            });
-        });
-    });
-};
