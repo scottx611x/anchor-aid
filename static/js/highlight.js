@@ -18,7 +18,7 @@ $( document ).ready(
         $text.highlight(parent.search.name, highlightClassName);
         $("." + highlightClassName).css('background-color', 'yellow');
         $('html, body').animate({
-            scrollTop: $text.offset().top * .93,
+            scrollTop: $text.offset().top * .975,
             scrollLeft: $text.offset().left
         });
 
