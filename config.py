@@ -1,6 +1,8 @@
 import os
+import sys
 
 import boto3
+from botocore.exceptions import ProfileNotFound
 
 from s3_bucket_config import S3_BUCKET
 
@@ -20,7 +22,10 @@ class ProductionConfig(Config):
 class DevelopmentConfig(Config):
     DEBUG = True
     AWS_PROFILE = "scottx611x@gmail.com"
-    session = boto3.Session(profile_name=AWS_PROFILE)
+    try:
+        session = boto3.Session(profile_name=AWS_PROFILE)
+    except ProfileNotFound:
+        print(f"Profile: {AWS_PROFILE} was not found", sys.stderr)
     S3_CLIENT = session.resource("s3").Bucket(S3_BUCKET)
 
 
