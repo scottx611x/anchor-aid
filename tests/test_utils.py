@@ -3,8 +3,8 @@ from unittest import TestCase
 import boto3
 from moto import mock_s3
 
-from s3_bucket_config import S3_BUCKET
-from utils import is_valid_url, validate_form_data, dump_s3, load_s3
+from index import app, s3
+from utils import is_valid_url, validate_form_data
 
 
 class UtilitiesTestCase(TestCase):
@@ -57,8 +57,8 @@ class UtilitiesTestCase(TestCase):
 class AWSUtilitiesTestCase(TestCase):
     def setUp(self):
         self.s3_client = boto3.client("s3")
-        self.s3_client.create_bucket(Bucket=S3_BUCKET)
+        self.s3_client.create_bucket(Bucket=app.config.get("S3_BUCKET"))
 
     def test_dump_and_load(self):
-        dump_s3("dog", {"name": "Fido"})
-        self.assertEqual(load_s3("dog")["name"], "Fido")
+        s3.dump("dog", {"name": "Fido"})
+        self.assertEqual(s3.load("dog")["name"], "Fido")

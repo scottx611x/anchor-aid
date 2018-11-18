@@ -3,9 +3,14 @@ import uuid
 from flask import Flask, Markup, Response, redirect, render_template, request
 import markdown
 
-from utils import dump_s3, load_s3, validate_form_data
+from config import set_app_config
+from utils import S3Interface, validate_form_data
+
 
 app = Flask(__name__)
+set_app_config(app)
+
+s3 = S3Interface(app)
 
 
 @app.route('/', defaults={'uuid': None}, methods=['GET'])
@@ -17,7 +22,7 @@ def index(uuid):
         return render_template("base.html", **{"readme": readme})
     else:
         try:
-            data = load_s3(uuid)
+            data = s3.load(uuid)
         except Exception as e:
             return Response(f"Bad Request: {e}", status=400)
         else:
@@ -37,5 +42,5 @@ def create():
         return Response("Bad Request", status=400)
 
     key = str(uuid.uuid4())
-    dump_s3(key, form_data)
+    s3.dump(key, form_data)
     return redirect(f"./{key}")

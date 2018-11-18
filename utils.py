@@ -2,12 +2,6 @@ import json
 import logging
 from urllib.parse import urlparse
 
-from s3_bucket_config import S3_BUCKET
-
-import boto3
-
-s3 = boto3.resource("s3").Bucket(S3_BUCKET)
-
 logger = logging.getLogger(__name__)
 
 
@@ -27,9 +21,12 @@ def validate_form_data(post_data):
         return {"site": site, "search": search}
 
 
-def load_s3(key):
-    return json.load(s3.Object(key=key).get()["Body"])
+class S3Interface:
+    def __init__(self, app):
+        self.s3_client = app.config.get("S3_CLIENT")
 
+    def load(self, key):
+        return json.load(self.s3_client.Object(key=key).get()["Body"])
 
-def dump_s3(key, obj):
-    s3.Object(key=key).put(Body=json.dumps(obj))
+    def dump(self, key, obj):
+        self.s3_client.Object(key=key).put(Body=json.dumps(obj))

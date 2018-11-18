@@ -5,14 +5,10 @@ from unittest import TestCase
 
 from flask import template_rendered
 
-from index import app
-from s3_bucket_config import S3_BUCKET
+from index import app, s3
 
 import boto3
 from moto import mock_s3
-
-from utils import dump_s3
-
 
 @contextmanager
 def captured_templates(app):
@@ -39,7 +35,7 @@ class RoutesTestCase(GenericTestBase):
     def setUp(self):
         super().setUp()
         self.s3_client = boto3.client("s3")
-        self.s3_client.create_bucket(Bucket=S3_BUCKET)
+        self.s3_client.create_bucket(Bucket=self.app.config.get("S3_BUCKET"))
 
     def test_index_route(self):
         with captured_templates(self.app) as templates:
@@ -53,7 +49,7 @@ class RoutesTestCase(GenericTestBase):
     def test_index_route_with_uuid(self):
         key = str(uuid.uuid4())
         data = {"search": "test", "site": "http://www.example.com"}
-        dump_s3(key, data)
+        s3.dump(key, data)
 
         with captured_templates(self.app) as templates:
             response = self.test_client.get('/' + key)
