@@ -19,6 +19,7 @@ You still can, but this might be easier.
 ## Sites that play nicely (...so far):
 - [Github](https://anchor-aid.scott-ouellette.com/908ceb2f-c7f2-4147-b17a-cc09c9703310)
 - [Wikipedia](https://anchor-aid.scott-ouellette.com/47a1d6e2-5416-4473-9f77-89858bfc76e6)
+- [Django docs](https://anchor-aid.scott-ouellette.com/141426bb-6e3e-4295-9808-4c720ed7ed7e)
 
 ## Known Limitations:
 - The web page to be rendered must be "iframe-able". Sites like [stackoverflow](https://stackoverflow.com) block this functionality.
