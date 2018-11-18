@@ -14,9 +14,6 @@ $( document ).ready(
         };
 
         let highlightClassName = "anchor-aid-highlight";
-        let anchors = document.getElementsByTagName('a');
-        for (let i = 0; i < anchors.length; i++)
-            anchors[i].target = '_blank';
         let $text = $('*:contains("' + parent.search.name + '"):last');
         $text.highlight(parent.search.name, highlightClassName);
         $("." + highlightClassName).css('background-color', 'yellow');
