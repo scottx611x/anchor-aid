@@ -3,9 +3,10 @@
 {% block css %}
 {% endblock %}
 {% block js %}
+    <meta id="search-data" data-name="{{search}}">
     <script>
         let site = '{{ site }}';
-        var search = '{{ search }}';
+        var search = $('#search-data').data();
     </script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/anchor-aid.js') }}"></script>
 {% endblock %}

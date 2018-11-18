@@ -4,11 +4,11 @@ $( document ).ready(
         let anchors = document.getElementsByTagName('a');
         for (let i = 0; i < anchors.length; i++)
             anchors[i].target = '_blank';
-        let $text = $('*:contains("' + parent.search + '"):last');
-        $text.highlight(parent.search, highlightClassName);
+        let $text = $('*:contains("' + parent.search.name + '"):last');
+        $text.highlight(parent.search.name, highlightClassName);
         $("." + highlightClassName).css('background-color', 'yellow');
         $('html, body').animate({
-            scrollTop: $text.offset().top * .9,
+            scrollTop: $text.offset().top * .93,
             scrollLeft: $text.offset().left
         });
 
