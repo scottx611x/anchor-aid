@@ -29,9 +29,11 @@ class TestingConfig(Config):
 
 
 def set_app_config(app):
-    if os.getenv("FLASK_DEV"):
-        app.config.from_object('config.DevelopmentConfig')
-    elif os.getenv("FLASK_TEST"):
+    if os.getenv("FLASK_TEST"):
         app.config.from_object('config.TestingConfig')
+        return
+    elif os.getenv("FLASK_DEV"):
+        app.config.from_object('config.DevelopmentConfig')
+        return
     else:
         app.config.from_object('config.ProductionConfig')
