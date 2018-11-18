@@ -10,6 +10,9 @@ from index import app, s3
 import boto3
 from moto import mock_s3
 
+from s3_bucket_config import S3_BUCKET
+
+
 @contextmanager
 def captured_templates(app):
     recorded = []
@@ -35,7 +38,7 @@ class RoutesTestCase(GenericTestBase):
     def setUp(self):
         super().setUp()
         self.s3_client = boto3.client("s3")
-        self.s3_client.create_bucket(Bucket=self.app.config.get("S3_BUCKET"))
+        self.s3_client.create_bucket(Bucket=S3_BUCKET)
 
     def test_index_route(self):
         with captured_templates(self.app) as templates:

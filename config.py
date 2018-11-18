@@ -13,7 +13,6 @@ class Config(object):
     S3_CLIENT = boto3.resource("s3").Bucket(S3_BUCKET)
 
 
-
 class ProductionConfig(Config):
     pass
 
