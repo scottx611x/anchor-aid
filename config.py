@@ -26,7 +26,8 @@ class DevelopmentConfig(Config):
         session = boto3.Session(profile_name=AWS_PROFILE)
     except ProfileNotFound:
         print(f"Profile: {AWS_PROFILE} was not found", sys.stderr)
-    S3_CLIENT = session.resource("s3").Bucket(S3_BUCKET)
+    else:
+        S3_CLIENT = session.resource("s3").Bucket(S3_BUCKET)
 
 
 class TestingConfig(Config):
